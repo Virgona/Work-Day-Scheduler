@@ -68,9 +68,21 @@ textarea {
   border-bottom-right-radius: 15px;
   background-color: #06aed5;
   color: white;
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.saveBtn i {
+  font-size: 30px;
 }
 
 .saveBtn i:hover {
-  font-size: 20px;
+  font-size: 40px;
   transition: all 0.3s ease-in-out;
 }
+
+/* .fa-save {
+  font-size: 40px;
+} */

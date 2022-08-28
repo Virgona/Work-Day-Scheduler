@@ -5,7 +5,6 @@ $('#currentDay').text(timeStamp);
 // all the times of the working day in the calendar
 var nineAm = moment("09:00:00 AM", "h:mm:ss A").format('ha');
 $('#9am').text(nineAm);
-// $('#9am').css("bottom:3px");
 
 var tenAm = moment("10:00:00 AM", "h:mm:ss A").format('ha');
 $('#10am').text(tenAm);
