@@ -31,38 +31,37 @@ var fivePm = moment("05:00:00 PM", "h:mm:ss A").format('ha');
 $('#5pm').text(fivePm);
 
 function getList() {
-    // pulls items from the local storage to stay in the planner when refreshed
-    $("#9 .description").val(localStorage.getItem("9"));
-    $("#10 .description").val(localStorage.getItem("10"));
-    $("#11 .description").val(localStorage.getItem("11"));
-    $("#12 .description").val(localStorage.getItem("12"));
-    $("#1 .description").val(localStorage.getItem("1"));
-    $("#2 .description").val(localStorage.getItem("2"));
-    $("#3 .description").val(localStorage.getItem("3"));
-    $("#4 .description").val(localStorage.getItem("4"));
-    $("#5 .description").val(localStorage.getItem("5"));
+    // pulls items from the local storage to planner
+    $("#9").html(localStorage.getItem("9"));
+    $("#10").html(localStorage.getItem("10"));
+    $("#11").html(localStorage.getItem("11"));
+    $("#12").html(localStorage.getItem("12"));
+    $("#1").html(localStorage.getItem("1"));
+    $("#2").html(localStorage.getItem("2"));
+    $("#3").html(localStorage.getItem("3"));
+    $("#4").html(localStorage.getItem("4"));
+    $("#5").html(localStorage.getItem("5"));
 }
 
 // storing entered todo's into local storage
 $('.saveBtn').on("click", function () {
 
-    console.log(this);
     var text = $(this).siblings(".description").val();
     var time = $(this).attr("index");
 
     localStorage.setItem(time, text);
 })
 
-// $("#9am .description").val(localStorage.getItem("9am"));
 
-
-// function timeTracker() {
-//     var timeOnTracker = $('.hour');
-//     var currentTime = moment().hour();
-
-//     $(".todos").each(function () {
-//         console.log(timeOnTracker, currentTime);
-//     })
-// }
+function timeTracker() {
+    $('.time').each(function () {
+        var timeOnTracker = parseInt($(this).attr('id'));
+        console.log(timeOnTracker);
+    })
+    var currentTime = moment().hour();
+    // $(".todos").each(function () {
+    //     console.log(timeOnTracker, currentTime);
+    // })
+}
 getList()
-// timeTracker()
+timeTracker()
