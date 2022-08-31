@@ -29,3 +29,28 @@ $('#4pm').text(fourPm);
 
 var fivePm = moment("05:00:00 PM", "h:mm:ss A").format('ha');
 $('#5pm').text(fivePm);
+
+
+// storing entered todo's into local storage
+$('.saveBtn').on("click", function () {
+
+    console.log(this);
+    var text = $(this).siblings(".description").val();
+    var time = $('.time');
+
+    localStorage.setItem(time, text);
+})
+
+// $("#9am .description").val(localStorage.getItem("9am"));
+
+
+// function timeTracker() {
+//     var timeOnTracker = $('.hour');
+//     var currentTime = moment().hour();
+
+//     $(".todos").each(function () {
+//         console.log(timeOnTracker, currentTime);
+//     })
+// }
+
+// timeTracker()
