@@ -36,45 +36,48 @@ function getList() {
     $("#10").html(localStorage.getItem("10"));
     $("#11").html(localStorage.getItem("11"));
     $("#12").html(localStorage.getItem("12"));
-    $("#1").html(localStorage.getItem("1"));
-    $("#2").html(localStorage.getItem("2"));
-    $("#3").html(localStorage.getItem("3"));
-    $("#4").html(localStorage.getItem("4"));
-    $("#5").html(localStorage.getItem("5"));
+    $("#13").html(localStorage.getItem("13"));
+    $("#14").html(localStorage.getItem("14"));
+    $("#15").html(localStorage.getItem("15"));
+    $("#16").html(localStorage.getItem("16"));
+    $("#17").html(localStorage.getItem("17"));
 }
 
 // storing entered todo's into local storage
 $('.saveBtn').on("click", function () {
 
     var text = $(this).siblings("textarea").val();
-    var time = $(this).attr("index");
+    // var time = $(this).attr("index");
+    var time = $(this).siblings("textarea").attr('id');
 
     localStorage.setItem(time, text);
 })
 
 // compares the time of day to the time on the tracker and applies css stylings
 function timeTracker() {
-    $('.time').each(function () {
+    $('.time-block textarea').each(function () {
+        console.log(this);
         var timeOnTracker = parseInt($(this).attr('id'));
 
         // I changed the hours to show in a standard format to match the convential timing I used as opposed to 24hr time
-        var currentTime = moment().hour();
+        var currentTime = parseInt(moment().format('H'));
+        //sanity check
         console.log(timeOnTracker, currentTime);
         if (timeOnTracker < currentTime) {
-            $(".description-" + timeOnTracker).addClass("past")
-            $(".description-" + timeOnTracker).removeClass("future")
-            $(".description-" + timeOnTracker).removeClass("present")
+            $(this).addClass("past")
+            $(this).removeClass("future")
+            $(this).removeClass("present")
         }
 
         else if (timeOnTracker === currentTime) {
-            $(".description-" + timeOnTracker).removeClass("past");
-            $(".description-" + timeOnTracker).addClass("present");
-            $(".description-" + timeOnTracker).removeClass("future");
+            $(this).removeClass("past");
+            $(this).addClass("present");
+            $(this).removeClass("future");
         }
         else {
-            $(".description-" + timeOnTracker).removeClass("present");
-            $(".description-" + timeOnTracker).removeClass("past");
-            $(".description-" + timeOnTracker).addClass("future");
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+            $(this).addClass("future");
         }
     })
 }
