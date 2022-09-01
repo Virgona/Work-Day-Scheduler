@@ -46,35 +46,35 @@ function getList() {
 // storing entered todo's into local storage
 $('.saveBtn').on("click", function () {
 
-    var text = $(this).siblings(".description").val();
+    var text = $(this).siblings("textarea").val();
     var time = $(this).attr("index");
 
     localStorage.setItem(time, text);
 })
 
-
+// compares the time of day to the time on the tracker and applies css stylings
 function timeTracker() {
     $('.time').each(function () {
         var timeOnTracker = parseInt($(this).attr('id'));
-        console.log(this);
 
+        // I changed the hours to show in a standard format to match the convential timing I used as opposed to 24hr time
         var currentTime = moment().hour();
-
+        console.log(timeOnTracker, currentTime);
         if (timeOnTracker < currentTime) {
-            $(".description").addClass(".past")
-            $(".description").removeClass(".future")
-            $(".description").removeClass("present")
+            $(".description-" + timeOnTracker).addClass("past")
+            $(".description-" + timeOnTracker).removeClass("future")
+            $(".description-" + timeOnTracker).removeClass("present")
         }
 
         else if (timeOnTracker === currentTime) {
-            $(".description").removeClass(".past");
-            $(".description").addClass(".present");
-            $(".description").removeClass(".future");
+            $(".description-" + timeOnTracker).removeClass("past");
+            $(".description-" + timeOnTracker).addClass("present");
+            $(".description-" + timeOnTracker).removeClass("future");
         }
         else {
-            $(".description").removeClass(".present");
-            $(".description").removeClass(".past");
-            $(".description").addClass(".future");
+            $(".description-" + timeOnTracker).removeClass("present");
+            $(".description-" + timeOnTracker).removeClass("past");
+            $(".description-" + timeOnTracker).addClass("future");
         }
     })
 }
