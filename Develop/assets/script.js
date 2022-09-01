@@ -56,12 +56,27 @@ $('.saveBtn').on("click", function () {
 function timeTracker() {
     $('.time').each(function () {
         var timeOnTracker = parseInt($(this).attr('id'));
-        console.log(timeOnTracker);
+        console.log(this);
+
+        var currentTime = moment().hour();
+
+        if (timeOnTracker < currentTime) {
+            $(".description").addClass(".past")
+            $(".description").removeClass(".future")
+            $(".description").removeClass("present")
+        }
+
+        else if (timeOnTracker === currentTime) {
+            $(".description").removeClass(".past");
+            $(".description").addClass(".present");
+            $(".description").removeClass(".future");
+        }
+        else {
+            $(".description").removeClass(".present");
+            $(".description").removeClass(".past");
+            $(".description").addClass(".future");
+        }
     })
-    var currentTime = moment().hour();
-    // $(".todos").each(function () {
-    //     console.log(timeOnTracker, currentTime);
-    // })
 }
 getList()
 timeTracker()
