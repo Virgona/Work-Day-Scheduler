@@ -4,7 +4,7 @@
 ## Application
 
 A work schedule whereby a user can track their tasks for the day. The user inputs tasks ordered by time. A colour scheme will tell the user when the time is present (red) upcoming (green) or past(grey). Their tasks will remain in the text area if they have saved using the button. If the page is reloaded their tasks will remain until they delete them.
-Try it out - 
+Try it out - https://virgona.github.io/Work-Day-Scheduler/
 
 
 ## Challenges
